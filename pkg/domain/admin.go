@@ -1,6 +1,10 @@
 package domain
 
-import "gorm.io/gorm"
+import (
+	"linkdin/pkg/utils/models"
+
+	"gorm.io/gorm"
+)
 
 type Admin struct {
 	gorm.Model
@@ -11,4 +15,9 @@ type Admin struct {
 	Profile      Profile `json:"profile"`
 	JobsPosted   []Job   `json:"jobs_posted"`
 	Users        []User  `json:"user"`
+}
+type AdminToken struct{
+	Admin models.AdminDetailsResponse
+	Token string
+	RefreshToken string
 }
