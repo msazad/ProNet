@@ -1,7 +1,7 @@
 package domain
 
 type Profile struct {
-	ID                uint
+	ID                uint `json:"id" gorm:"primarykey"`
 	ApplicantID       uint
 	ResumeFileAddress string
 	Skills            string
