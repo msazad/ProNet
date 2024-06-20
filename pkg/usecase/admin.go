@@ -3,6 +3,7 @@ package usecase
 import (
 	"fmt"
 	"linkdin/pkg/domain"
+	"linkdin/pkg/helper"
 	"linkdin/pkg/repository/interfaces"
 	services "linkdin/pkg/usecase/interfaces"
 	"linkdin/pkg/utils/models"
@@ -36,16 +37,16 @@ func (au *adminUsecase) LoginHandler(adminDetails models.AdminLogin) (domain.Adm
 	}
 	var adminDetailsResponse models.AdminDetailsResponse
 	adminDetailsResponse.ID = int(adminCompareDetails.ID)
-	adminDetailsResponse.Name=adminCompareDetails.Name
-	adminDetailsResponse.Email=adminCompareDetails.Email
+	adminDetailsResponse.Name = adminCompareDetails.Name
+	adminDetailsResponse.Email = adminCompareDetails.Email
 	fmt.Println("reached the admindetailsresponse")
-	token,refresh,err:=helper.GenerateAdminToken(adminDetailsResponse)
-	if err!=nil{
-		return domain.AdminToken{},err
+	token, refresh, err := helper.GenerateAdminToken(adminDetailsResponse)
+	if err != nil {
+		return domain.AdminToken{}, err
 	}
 	return domain.AdminToken{
-		Admin: adminDetailsResponse,
-		Token: token,
+		Admin:        adminDetailsResponse,
+		Token:        token,
 		RefreshToken: refresh,
-	},nil
+	}, nil
 }
