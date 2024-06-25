@@ -36,3 +36,4 @@ func (ah *AdminHandler) LoginHandler(c *gin.Context) {
 	successRes := response.ClientResponse(http.StatusOK, "Admin authenticated successfully", admin, nil)
 	c.JSON(http.StatusOK, successRes)
 }
+
