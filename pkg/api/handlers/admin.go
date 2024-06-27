@@ -37,3 +37,5 @@ func (ah *AdminHandler) LoginHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, successRes)
 }
 
+
+
